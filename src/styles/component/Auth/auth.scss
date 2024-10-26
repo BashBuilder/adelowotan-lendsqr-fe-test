@@ -1,0 +1,179 @@
+@import "../../variables";
+
+// Font faces
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/Avenir/Avenir-Light.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/Avenir/Avenir-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/Avenir/Avenir-Black.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+// Main container styling
+main {
+  position: relative;
+  font-family: "Avenir", sans-serif;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+  min-height: 100vh; // Fallback for older browsers
+  min-height: 100svh; // Small viewport height for improved mobile support
+  max-width: map-get($breakpoints, "2xl");
+  margin: 0 auto;
+
+  @include respond("md") {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 999;
+  }
+}
+
+// Auth Image container styling
+.auth-image-container {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond("md") {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// Form container styling
+form {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 10px;
+    height: 100%;
+    box-shadow: 0 15px 90px rgba(0, 0, 0, 1);
+    pointer-events: none;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  section {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    width: min(90%, 30rem);
+    height: 100%;
+    margin: auto;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: $secondary-color;
+    }
+
+    p {
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: $gray-color;
+    }
+
+    input {
+      padding: 1rem;
+      width: 100%;
+      margin: 0.5rem 0;
+      border: 1px solid rgba($gray-color, 0.15);
+      border-radius: 0.5rem;
+      color: $gray-color;
+      outline: none;
+      &::placeholder {
+        color: rgba($gray-color, 0.5);
+      }
+    }
+  }
+}
+
+// Password container styling
+.password-container {
+  position: relative;
+
+  input {
+    padding-right: 5rem;
+  }
+
+  button {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    padding: 0;
+    transform: translateY(-50%);
+    color: $primary-color;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+}
+
+// Button styling
+.btn-forget {
+  padding: 0;
+  width: fit-content;
+  color: $primary-color;
+
+  &:hover {
+    color: darken($primary-color, 10%);
+  }
+}
+
+.btn-submit {
+  color: #fff;
+  background-color: $primary-color;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}

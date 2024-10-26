@@ -1,0 +1,19 @@
+//color variables
+$primary-color: #39cdcc;
+$secondary-color: #213f7d;
+$gray-color: #545f7d;
+
+// breakpoints
+$breakpoints: (
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "2xl": 1536px,
+);
+
+@mixin respond($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
