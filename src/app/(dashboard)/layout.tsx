@@ -8,8 +8,9 @@ export const metadata: Metadata = {
   description: "The test dashboard page",
 };
 
-export default function RootLayout({}: // children,
-Readonly<{
+export default function RootLayout({
+  children,
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
@@ -17,7 +18,7 @@ Readonly<{
       <body>
         <Navbar />
         <Sidebar />
-        {/* <main className="content-display">{children}</main> */}
+        <main className="content">{children}</main>
       </body>
     </html>
   );

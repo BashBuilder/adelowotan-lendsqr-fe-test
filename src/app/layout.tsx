@@ -5,7 +5,6 @@ import { Work_Sans } from "next/font/google";
 const WorkSan = Work_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  // style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {

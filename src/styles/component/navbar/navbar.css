@@ -53,13 +53,20 @@ form button img {
 section {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.5rem;
+}
+section a {
+  text-decoration: underline;
+  color: #213f7d;
 }
 section button {
-  padding: 0 0.5rem;
+  padding: 0 0;
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+section button span span {
+  margin-right: 0.25rem;
 }
 
 .user-dropdown {

@@ -1,0 +1,115 @@
+@import "../../variables";
+
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.page-title {
+  color: $secondary-color;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1.25rem;
+    background-color: $white-color;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    span {
+      padding: 0.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+
+      &[data-color="#DF18FF"] {
+        background-color: rgba(#df18ff, 0.1);
+      }
+      &[data-color="#5718FF"] {
+        background-color: rgba(#5718ff, 0.1);
+      }
+      &[data-color="#F55F44"] {
+        background-color: rgba(#f55f44, 0.1);
+      }
+      &[data-color="#FF3366"] {
+        background-color: rgba(#ff3366, 0.1);
+      }
+    }
+    p {
+      font-size: 0.875rem;
+      color: $gray-color;
+    }
+    h3 {
+      font-size: 1.5rem;
+      color: $secondary-color;
+    }
+  }
+}
+
+.table-container {
+  position: relative;
+  overflow-x: auto;
+  background-color: $white-color;
+  border-radius: 0.5rem;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  padding: 0.5rem 0;
+
+  .table {
+    width: 100%;
+    text-align: left;
+    font-size: $font-size-sm;
+    color: #6b7280; // Text-gray-500
+
+    thead {
+      text-transform: uppercase;
+      color: $gray-color;
+      font-size: $font-size-sm;
+
+      th {
+        padding: 1rem 1.5rem; // Equivalent to px-6 py-3
+      }
+    }
+
+    tbody {
+      tr {
+        // &.dark {
+        //   background-color: #1f2937; // dark:bg-gray-800
+        //   border-bottom: 1px solid #374151; // dark:border-gray-700
+        // }
+
+        th {
+          padding: 1rem 1.5rem; // Equivalent to px-6 py-4
+          font-weight: 500; // font-medium
+          color: #111827; // text-gray-900
+          white-space: nowrap; // whitespace-nowrap
+
+          &.dark {
+            color: white; // dark:text-white
+          }
+        }
+
+        td {
+          padding: 1rem 1.5rem; // Equivalent to px-6 py-4
+        }
+
+        &:last-child {
+          background-color: #1f2937; // dark:bg-gray-800
+        }
+      }
+    }
+  }
+}
