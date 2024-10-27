@@ -6,6 +6,24 @@
   box-sizing: border-box;
 }
 
+body {
+  position: relative;
+  background: $background-color;
+}
+
+input {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul li {
+  list-style-type: none;
+}
+
 button {
   cursor: pointer;
   background-color: transparent;

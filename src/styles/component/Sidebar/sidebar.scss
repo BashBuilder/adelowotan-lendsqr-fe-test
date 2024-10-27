@@ -1,0 +1,101 @@
+@import "../../variables";
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 18rem;
+  overflow-y: auto;
+  background-color: $white-color;
+  padding: 7rem 0 1rem 0;
+  box-shadow: 0, 5px, 20px, rgba(0, 0, 0, 0.04);
+  scrollbar-width: 0.5rem;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($gray-light-color, 0.4);
+    border-radius: 10px;
+    border: 3px solid #f5f5f5;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba($gray-light-color, 0.8);
+  }
+}
+
+button {
+  display: flex;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  gap: 1rem;
+  span {
+    font-size: 1rem;
+    color: $gray-light-color;
+    font-weight: 500;
+  }
+}
+
+.dashboard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  p {
+    font-size: 0.875em;
+    color: rgba($gray-light-color, 0.4);
+    font-weight: 500;
+  }
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  h3 {
+    color: $gray-color;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 0.75rem;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    li a {
+      position: relative;
+      display: flex;
+      padding: 0.75rem 1rem;
+      align-items: center;
+      gap: 1rem;
+      &:hover {
+        background: rgba($primary-color, 0.06);
+      }
+
+      span {
+        font-size: 0.875rem;
+        color: rgba($gray-light-color, 0.5);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.active {
+  background: rgba($primary-color, 0.06);
+  span {
+    color: $gray-light-color;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0.25rem;
+    background-color: $primary-color;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}

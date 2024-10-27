@@ -30,6 +30,7 @@ main {
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   align-items: center;
+  background: #fff;
   min-height: 100vh; // Fallback for older browsers
   min-height: 100svh; // Small viewport height for improved mobile support
   max-width: map-get($breakpoints, "2xl");
