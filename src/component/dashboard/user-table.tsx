@@ -1,6 +1,8 @@
 import { tableData, tableHeader } from "@/data/constants";
 import Image from "next/image";
 import React from "react";
+import TableFormModal from "./table-form-modal";
+import Popover from "../ui/popover";
 
 const buttonList = [1, 2, 3, 4, 5];
 
@@ -14,17 +16,23 @@ const UserTable = () => {
               {tableHeader.map((header) => (
                 <th key={header} scope="col">
                   {header && (
-                    <button>
-                      <span> {header} </span>
-                      <span>
-                        <Image
-                          src="/assets/svg/icons/filter.svg"
-                          alt="sort-icon"
-                          width={12}
-                          height={12}
-                        />
-                      </span>
-                    </button>
+                    <Popover
+                      trigger={
+                        <div className="table-header">
+                          <span> {header} </span>
+                          <span>
+                            <Image
+                              src="/assets/svg/icons/filter.svg"
+                              alt="sort-icon"
+                              width={12}
+                              height={12}
+                            />
+                          </span>
+                        </div>
+                      }
+                    >
+                      <TableFormModal />
+                    </Popover>
                   )}
                 </th>
               ))}
@@ -55,6 +63,8 @@ const UserTable = () => {
           </tbody>
         </table>
       </div>
+
+      {/* table footer */}
       <div className="table-pagination">
         <div className="left-pagination">
           <p>Showing</p>
@@ -75,7 +85,7 @@ const UserTable = () => {
             />
           </button>
           {buttonList.map((button) => (
-            <button key={button} className={button === 1 ? "active" : ""}>
+            <button key={button} className={button === 1 ? "" : ""}>
               {button}
             </button>
           ))}

@@ -59,6 +59,7 @@
 }
 
 .table-section {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -91,11 +92,14 @@
   color: #545f7d;
   border-collapse: collapse;
 }
-.table-container .table thead th button {
-  padding: 1rem;
+.table-container .table thead .table-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
   color: #545f7d;
 }
-.table-container .table thead th button span {
+.table-container .table thead .table-header span {
   white-space: nowrap;
   text-transform: uppercase;
   font-size: 0.75rem;
@@ -132,4 +136,27 @@
 }
 .table-pagination .right-pagination {
   gap: 0.25rem;
+}
+
+.table-modal-form {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(84, 95, 125, 0.05);
+  width: max(100%, 20rem);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+}
+.table-modal-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+.table-modal-form label input,
+.table-modal-form label select {
+  width: 100%;
+  padding: 1rem;
 }/*# sourceMappingURL=dashboard.css.map */

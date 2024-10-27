@@ -61,6 +61,7 @@
 }
 
 .table-section {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -94,8 +95,11 @@
     border-collapse: collapse;
 
     thead {
-      th button {
-        padding: 1rem;
+      .table-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.25rem;
         color: $gray-color;
         span {
           white-space: nowrap;
@@ -116,7 +120,6 @@
         td {
           padding: 1rem 1.5rem;
           font-weight: 500;
-          // white-space: nowrap;
           border-bottom: 1px solid rgba($gray-color, 0.2);
         }
         &:last-child {
@@ -145,5 +148,29 @@
   }
   .right-pagination {
     gap: 0.25rem;
+  }
+}
+
+.table-modal-form {
+  background-color: $white-color;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba($gray-color, 0.05);
+  width: max(100%, 20rem);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    input,
+    select {
+      width: 100%;
+      padding: 1rem;
+    }
   }
 }

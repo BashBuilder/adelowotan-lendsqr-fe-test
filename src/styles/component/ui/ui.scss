@@ -1,0 +1,12 @@
+@import "../../variables";
+
+.popover-container {
+  position: relative;
+}
+
+.popover {
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  margin-top: 2;
+}
