@@ -28,7 +28,6 @@ button {
   cursor: pointer;
   background-color: transparent;
   border: none;
-  // padding: 1rem 2rem;
 }
 
 p,
@@ -42,7 +41,7 @@ h6 {
 }
 
 .content {
-  padding: 3rem 3rem 3rem calc($sidebar-length + 3rem);
+  padding: calc($navbar-height + 3rem) 3rem 3rem calc($sidebar-length + 3rem);
 
   // @include respond("md") {
   //   padding: 1rem;

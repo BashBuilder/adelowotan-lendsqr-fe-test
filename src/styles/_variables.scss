@@ -28,6 +28,7 @@ $font-size-6xl: 3.75rem; // 60px
 
 // size
 $sidebar-length: 18rem;
+$navbar-height: 5rem;
 
 @mixin respond($breakpoint) {
   @media (max-width: map-get($breakpoints, $breakpoint)) {

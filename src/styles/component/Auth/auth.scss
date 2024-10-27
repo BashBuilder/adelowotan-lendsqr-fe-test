@@ -173,6 +173,7 @@ form {
   background-color: $primary-color;
   border-radius: 0.5rem;
   transition: background-color 0.3s ease-in-out;
+  padding: 1rem 2rem;
 
   &:hover {
     background-color: darken($primary-color, 10%);

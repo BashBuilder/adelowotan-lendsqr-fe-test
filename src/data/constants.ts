@@ -110,3 +110,56 @@ export const sidebarLinks: SidebarLinkType[] = [
     ],
   },
 ];
+
+export const tableHeader = [
+  "Organization",
+  "Username",
+  "Email",
+  "Phone number",
+  "Date joined",
+  "Status",
+  "",
+];
+
+export const tableData = [
+  {
+    organization: "Lendsqr",
+    username: "Adedeji",
+    email: "adedeji@lendsqr.com",
+    phoneNumber: "08078903721",
+    dateJoined: "May 15, 2020 10:00 AM",
+    status: "Inactive",
+  },
+  {
+    organization: "Lendsqr",
+    username: "Adedeji",
+    email: "adedeji@lendsqr.com",
+    phoneNumber: "08078903721",
+    dateJoined: "May 15, 2020 10:00 AM",
+    status: "Inactive",
+  },
+  {
+    organization: "Lendsqr",
+    username: "Adedeji",
+    email: "adedeji@lendsqr.com",
+    phoneNumber: "08078903721",
+    dateJoined: "May 15, 2020 10:00 AM",
+    status: "Inactive",
+  },
+  {
+    organization: "Lendsqr",
+    username: "Adedeji",
+    email: "adedeji@lendsqr.com",
+    phoneNumber: "08078903721",
+    dateJoined: "May 15, 2020 10:00 AM",
+    status: "Inactive",
+  },
+  {
+    organization: "Lendsqr",
+    username: "Adedeji",
+    email: "adedeji@lendsqr.com",
+    phoneNumber: "08078903721",
+    dateJoined: "May 15, 2020 10:00 AM",
+    status: "Inactive",
+  },
+];

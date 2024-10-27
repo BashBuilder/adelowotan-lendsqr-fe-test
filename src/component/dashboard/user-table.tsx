@@ -1,54 +1,94 @@
+import { tableData, tableHeader } from "@/data/constants";
 import Image from "next/image";
 import React from "react";
 
+const buttonList = [1, 2, 3, 4, 5];
+
 const UserTable = () => {
   return (
-    <div className="table-container">
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">
-              <button>
-                <span>Organization</span>
-                <span>
-                  <Image
-                    src="/assets/svg/icons/filter.svg"
-                    alt="sort-icon"
-                    width={12}
-                    height={12}
-                  />
-                </span>
-              </button>
-            </th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone number</th>
-            <th scope="col">Date joined</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
+    <div className="table-section">
+      <div className="table-container">
+        <table className="table">
+          <thead>
+            <tr>
+              {tableHeader.map((header) => (
+                <th key={header} scope="col">
+                  {header && (
+                    <button>
+                      <span> {header} </span>
+                      <span>
+                        <Image
+                          src="/assets/svg/icons/filter.svg"
+                          alt="sort-icon"
+                          width={12}
+                          height={12}
+                        />
+                      </span>
+                    </button>
+                  )}
+                </th>
+              ))}
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <th scope="row">Apple MacBook Pro 17</th>
-            <td>Silver</td>
-            <td>Laptop</td>
-            <td>$2999</td>
-          </tr>
-          <tr>
-            <th scope="row">Microsoft Surface Pro</th>
-            <td>White</td>
-            <td>Laptop PC</td>
-            <td>$1999</td>
-          </tr>
-          <tr>
-            <th scope="row">Magic Mouse 2</th>
-            <td>Black</td>
-            <td>Accessories</td>
-            <td>$99</td>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            {tableData.map((data, index) => (
+              <tr key={index}>
+                <td>{data.organization}</td>
+                <td>{data.username}</td>
+                <td>{data.email}</td>
+                <td>{data.phoneNumber}</td>
+                <td>{data.dateJoined}</td>
+                <td>{data.status}</td>
+                <td>
+                  <button>
+                    <Image
+                      src="/assets/svg/icons/ic-more-vert-18px.svg"
+                      alt="sort-icon"
+                      width={18}
+                      height={18}
+                    />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="table-pagination">
+        <div className="left-pagination">
+          <p>Showing</p>
+          <select name="" id="">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+          </select>
+          <p>Out of 100</p>
+        </div>
+        <div className="right-pagination">
+          <button>
+            <Image
+              src="/assets/svg/icons/ic-chevron-left-18px.svg"
+              alt="sort-icon"
+              width={18}
+              height={18}
+            />
+          </button>
+          {buttonList.map((button) => (
+            <button key={button} className={button === 1 ? "active" : ""}>
+              {button}
+            </button>
+          ))}
+          <button>
+            <Image
+              src="/assets/svg/icons/ic-chevron-left-18px.svg"
+              alt="sort-icon"
+              width={18}
+              height={18}
+            />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

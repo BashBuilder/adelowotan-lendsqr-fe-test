@@ -1,13 +1,16 @@
 @import "../../variables";
 
 header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 2rem;
-  height: 5rem;
+  height: $navbar-height;
   background-color: $white-color;
   box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.04);
 }
