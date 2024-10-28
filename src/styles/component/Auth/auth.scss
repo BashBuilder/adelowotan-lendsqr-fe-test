@@ -118,6 +118,14 @@ form {
       color: $gray-color;
     }
 
+    .auth-error {
+      border-color: red;
+    }
+
+    .auth-error-span {
+      color: red;
+    }
+
     input {
       padding: 1rem;
       width: 100%;

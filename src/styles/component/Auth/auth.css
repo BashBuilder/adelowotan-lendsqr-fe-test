@@ -107,6 +107,12 @@ form section p {
   font-weight: 300;
   color: #545f7d;
 }
+form section .auth-error {
+  border-color: red;
+}
+form section .auth-error-span {
+  color: red;
+}
 form section input {
   padding: 1rem;
   width: 100%;

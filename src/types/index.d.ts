@@ -6,3 +6,8 @@ declare interface SidebarLinkType {
     icon: string;
   }[];
 }
+
+declare type UserData = {
+  email: string;
+  password: string;
+};
