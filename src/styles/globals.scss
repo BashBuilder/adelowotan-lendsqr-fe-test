@@ -1,4 +1,5 @@
 @import "variables";
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playwrite+DE+Grund:wght@100..400&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
   margin: 0;
@@ -9,6 +10,8 @@
 body {
   position: relative;
   background: $background-color;
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
 }
 
 input {
@@ -38,6 +41,7 @@ h4,
 h5,
 h6 {
   cursor: default;
+  font-size: $font-size-base;
 }
 
 .content {
