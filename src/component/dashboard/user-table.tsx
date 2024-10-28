@@ -1,8 +1,8 @@
 import { tableData, tableHeader } from "@/data/constants";
 import Image from "next/image";
 import React from "react";
-import TableFormModal from "./table-form-modal";
-import Popover from "../ui/popover";
+// import TableFormModal from "./table-form-modal";
+// import Popover from "../ui/popover";
 
 const buttonList = [1, 2, 3, 4, 5];
 
@@ -16,23 +16,17 @@ const UserTable = () => {
               {tableHeader.map((header) => (
                 <th key={header} scope="col">
                   {header && (
-                    <Popover
-                      trigger={
-                        <div className="table-header">
-                          <span> {header} </span>
-                          <span>
-                            <Image
-                              src="/assets/svg/icons/filter.svg"
-                              alt="sort-icon"
-                              width={12}
-                              height={12}
-                            />
-                          </span>
-                        </div>
-                      }
-                    >
-                      <TableFormModal />
-                    </Popover>
+                    <div className="table-header">
+                      <span> {header} </span>
+                      <span>
+                        <Image
+                          src="/assets/svg/icons/filter.svg"
+                          alt="sort-icon"
+                          width={12}
+                          height={12}
+                        />
+                      </span>
+                    </div>
                   )}
                 </th>
               ))}

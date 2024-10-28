@@ -39,8 +39,10 @@ const TableFormModal = () => {
       </label>
 
       <div>
-        <button type="button">Reset</button>
-        <button>Filter</button>
+        <button type="button" className="reset-btn">
+          Reset
+        </button>
+        <button className="filter-btn">Filter</button>
       </div>
     </form>
   );

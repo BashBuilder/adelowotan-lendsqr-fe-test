@@ -16,7 +16,7 @@ const Navbar = () => {
         />
       </Link>
 
-      <form>
+      <form className="search-form">
         <input type="text" placeholder="Search for anything" />
         <button>
           <Image
