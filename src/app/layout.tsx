@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Work_Sans } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const WorkSan = Work_Sans({
   subsets: ["latin"],
@@ -19,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${WorkSan.className}`}>{children}</body>
+      <body className={`${WorkSan.className}`}>
+        <ToastContainer />
+        {children}
+      </body>
     </html>
   );
 }

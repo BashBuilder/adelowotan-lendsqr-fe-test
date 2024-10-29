@@ -7,7 +7,9 @@ import { TableFilterSchemaType } from "@/utils/tablefilter";
 import Pagination from "../ui/pagination";
 
 import Popup from "reactjs-popup";
-// import "reactjs-popup/dist/index.css";
+import { toast } from "react-toastify";
+import "reactjs-popup/dist/index.css";
+import { useRouter } from "next/navigation";
 
 interface TablePropsType {
   data: TableDataType[];
@@ -19,6 +21,8 @@ const UserTable = ({ data }: TablePropsType) => {
   const [currentList, setCurrentList] = useState({ start: 0, end: 10 });
   const [isFiltering, setIsFiltering] = useState(false);
   const [displayData, setDisplayData] = useState<TableDataType[]>([]);
+
+  const router = useRouter();
 
   const handlePageChange = (page: number) => {
     setCurrentPage((prev) => prev + page);
@@ -81,6 +85,13 @@ const UserTable = ({ data }: TablePropsType) => {
   }, [isFiltering]);
 
   const onSelect = (number: number) => setCurrentPage(number);
+
+  const notify = (message: string) => {
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 5000, // auto-close after 5 seconds
+    });
+  };
 
   return (
     <div className="table-section">
@@ -161,7 +172,12 @@ const UserTable = ({ data }: TablePropsType) => {
                       {/* @ts-expect-error "ts expects a react component instead of a function which is wrong" */}
                       {(close) => (
                         <div className="table-options-modal">
-                          <button>
+                          <button
+                            onClick={() => {
+                              router.push("/" + data.id);
+                              close();
+                            }}
+                          >
                             <Image
                               src="/assets/svg/icons/eyes.svg"
                               alt="sort-icon"
@@ -170,7 +186,14 @@ const UserTable = ({ data }: TablePropsType) => {
                             />
                             <span>View Details</span>
                           </button>
-                          <button>
+                          <button
+                            onClick={() => {
+                              notify(
+                                `User ${data.username} has been blacklisted.`
+                              );
+                              close();
+                            }}
+                          >
                             <Image
                               src="/assets/svg/icons/np_delete-friend_3248001_000000 1.svg"
                               alt="sort-icon"
@@ -179,7 +202,14 @@ const UserTable = ({ data }: TablePropsType) => {
                             />
                             <span>Blacklist User</span>
                           </button>
-                          <button>
+                          <button
+                            onClick={() => {
+                              notify(
+                                `User ${data.username} has been activated.`
+                              );
+                              close();
+                            }}
+                          >
                             <Image
                               src="/assets/svg/icons/np_user_2995993_000000 1.svg"
                               alt="sort-icon"

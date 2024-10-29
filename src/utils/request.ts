@@ -13,3 +13,17 @@ export const fetchTableData = async () => {
     return null;
   }
 };
+
+export const fetchUserData = async () => {
+  try {
+    const response = await fetch(endpoint.userDetails);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+};
