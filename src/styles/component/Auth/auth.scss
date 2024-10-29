@@ -23,7 +23,7 @@
 }
 
 // Main container styling
-main {
+.auth-page {
   position: relative;
   font-family: "Avenir", sans-serif;
   display: grid;
@@ -31,8 +31,8 @@ main {
   justify-items: center;
   align-items: center;
   background: #fff;
-  min-height: 100vh; // Fallback for older browsers
   min-height: 100svh; // Small viewport height for improved mobile support
+  min-height: 100vh; // Fallback for older browsers
   max-width: map-get($breakpoints, "2xl");
   margin: 0 auto;
 
@@ -45,6 +45,12 @@ main {
     top: 2rem;
     left: 2rem;
     z-index: 999;
+    img {
+      width: 100%;
+      @include respond("sm") {
+        max-width: 10rem;
+      }
+    }
   }
 }
 
@@ -94,7 +100,7 @@ form {
     pointer-events: none;
   }
 
-  section {
+  .auth-form-section {
     display: flex;
     position: relative;
     z-index: 2;
@@ -102,9 +108,13 @@ form {
     justify-content: center;
     gap: 2rem;
     padding: 2rem;
-    width: min(90%, 30rem);
+    width: min(95%, 30rem);
     height: 100%;
     margin: auto;
+
+    @include respond("md") {
+      padding: 1rem;
+    }
 
     h2 {
       font-size: 2.5rem;

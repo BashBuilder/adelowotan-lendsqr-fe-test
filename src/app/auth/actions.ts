@@ -1,5 +1,7 @@
 // actions.ts
 
+import { createSession } from "@/services/session";
+
 // Function to save data in local storage
 export const saveDataLocally = (
   data: UserData,
@@ -10,12 +12,18 @@ export const saveDataLocally = (
   if (action === "signup") {
     users.push(data);
     localStorage.setItem("users", JSON.stringify(users));
+    createSession(data.email);
     alert("User signed up successfully!");
-    return { sucess: "sucess" };
-  } else if (action === "login") {
+    return;
+  }
+
+  if (action === "login") {
+    createSession(data.email);
     alert("User logged in successfully!");
-    return { sucess: "sucess" };
-  } else if (action === "reset") {
+    return;
+  }
+
+  if (action === "reset") {
     const updatedUsers = users.map((user: UserData) =>
       user.email === data.email ? { ...user, password: data.password } : user
     );

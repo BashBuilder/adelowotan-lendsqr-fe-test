@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const AuthPage = () => {
   return (
-    <main>
+    <main className="auth-page">
       <Link href={"#"} className="logo">
         <Image
           src="/assets/svg/lendsqr logo.svg"

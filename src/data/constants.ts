@@ -107,6 +107,11 @@ export const sidebarLinks: SidebarLinkType[] = [
         href: "#",
         icon: "/assets/svg/icons/audit.svg",
       },
+      {
+        label: "Systems Messages",
+        href: "#",
+        icon: "/assets/svg/icons/tire 1.svg",
+      },
     ],
   },
 ];

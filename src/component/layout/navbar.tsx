@@ -5,7 +5,7 @@ import "@/styles/component/navbar/navbar.css";
 
 const Navbar = () => {
   return (
-    <header>
+    <header className="navbar-header">
       <Link href={"#"} className="logo">
         <Image
           src="/assets/svg/lendsqr logo.svg"
@@ -29,7 +29,7 @@ const Navbar = () => {
         </button>
       </form>
 
-      <section>
+      <section className="navbar-section">
         <Link href={"#"}>Docs</Link>
         <button>
           <svg width="22" height="25" viewBox="0 0 22 25" fill="none">

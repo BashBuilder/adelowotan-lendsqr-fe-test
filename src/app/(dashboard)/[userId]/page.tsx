@@ -104,51 +104,69 @@ const UserDetails = () => {
             </div>
           </div>
         </article>
+
         <hr className="divider" />
+
         <article>
-          <h3>Personal Information</h3>
+          <h3>Education and Employment</h3>
           <div className="user-info-content">
             <div>
-              <p>Full Name</p>
+              <p>level of education</p>
               <h4>Grace Effiom</h4>
             </div>
             <div>
-              <p>Phone Number </p>
+              <p>employment status </p>
               <h4>07060780922</h4>
             </div>
             <div>
-              <p>Email Address</p>
+              <p>sector of employment</p>
               <h4>grace@gmail.com</h4>
             </div>
             <div>
-              <p>Bvn</p>
+              <p>Duration of employment</p>
               <h4>07060780922</h4>
             </div>
             <div>
-              <p>Gender</p>
+              <p>office email</p>
               <h4>Female</h4>
             </div>
             <div>
-              <p>Marital status</p>
+              <p>Monthly income</p>
               <h4>Single</h4>
             </div>
             <div>
-              <p>Children</p>
+              <p>loan repayment</p>
               <h4>None</h4>
-            </div>
-            <div>
-              <p>Type of residence</p>
-              <h4>Parent’s Apartment</h4>
             </div>
           </div>
         </article>
         <hr className="divider" />
 
         <article>
-          <h3>Personal Information</h3>
+          <h3>Socials</h3>
           <div className="user-info-content">
             <div>
-              <p>Full Name</p>
+              <p>Twitter</p>
+              <h4>Grace Effiom</h4>
+            </div>
+            <div>
+              <p>Facebook </p>
+              <h4>07060780922</h4>
+            </div>
+            <div>
+              <p>Instagram</p>
+              <h4>grace@gmail.com</h4>
+            </div>
+          </div>
+        </article>
+
+        <hr className="divider" />
+
+        <article>
+          <h3>Guarantor</h3>
+          <div className="user-info-content">
+            <div>
+              <p>full Name</p>
               <h4>Grace Effiom</h4>
             </div>
             <div>
@@ -160,24 +178,56 @@ const UserDetails = () => {
               <h4>grace@gmail.com</h4>
             </div>
             <div>
-              <p>Bvn</p>
+              <p>Relationship</p>
+              <h4>grace@gmail.com</h4>
+            </div>
+          </div>
+        </article>
+
+        <hr className="divider" />
+
+        <article>
+          <h3>Guarantor</h3>
+          <div className="user-info-content">
+            <div>
+              <p>full Name</p>
+              <h4>Grace Effiom</h4>
+            </div>
+            <div>
+              <p>Phone Number </p>
               <h4>07060780922</h4>
             </div>
             <div>
-              <p>Gender</p>
-              <h4>Female</h4>
+              <p>Email Address</p>
+              <h4>grace@gmail.com</h4>
             </div>
             <div>
-              <p>Marital status</p>
-              <h4>Single</h4>
+              <p>Relationship</p>
+              <h4>grace@gmail.com</h4>
+            </div>
+          </div>
+        </article>
+
+        <hr className="divider" />
+
+        <article>
+          <h3>Guarantor</h3>
+          <div className="user-info-content">
+            <div>
+              <p>full Name</p>
+              <h4>Grace Effiom</h4>
             </div>
             <div>
-              <p>Children</p>
-              <h4>None</h4>
+              <p>Phone Number </p>
+              <h4>07060780922</h4>
             </div>
             <div>
-              <p>Type of residence</p>
-              <h4>Parent’s Apartment</h4>
+              <p>Email Address</p>
+              <h4>grace@gmail.com</h4>
+            </div>
+            <div>
+              <p>Relationship</p>
+              <h4>grace@gmail.com</h4>
             </div>
           </div>
         </article>

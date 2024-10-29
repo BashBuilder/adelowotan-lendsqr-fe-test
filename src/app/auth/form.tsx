@@ -80,7 +80,7 @@ const AuthForm = () => {
         isResetPasswordLink.state ? handlePasswordReset : onSubmit
       )}
     >
-      <section>
+      <section className="auth-form-section">
         {/* Auth Heading */}
         <div>
           <h2>

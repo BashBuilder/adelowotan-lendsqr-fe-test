@@ -1,4 +1,4 @@
-header {
+.navbar-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,6 +8,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 2rem;
+  gap: 2rem;
   height: 5rem;
   background-color: #fff;
   box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.04);
@@ -18,6 +19,11 @@ header {
   display: flex;
   width: min(100%, 400px);
   align-items: center;
+}
+@media (max-width: 768px) {
+  .search-form {
+    display: none;
+  }
 }
 .search-form input {
   width: 100%;
@@ -53,22 +59,26 @@ header {
      object-fit: contain;
 }
 
-section {
+.navbar-section {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
-section a {
+.navbar-section a {
   text-decoration: underline;
   color: #213f7d;
 }
-section button {
-  padding: 0 0;
+@media (max-width: 768px) {
+  .navbar-section {
+    display: none;
+  }
+}
+.navbar-section button {
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
-section button span span {
+.navbar-section button span span {
   margin-right: 0.25rem;
 }
 

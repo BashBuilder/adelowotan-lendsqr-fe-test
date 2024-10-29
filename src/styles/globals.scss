@@ -47,11 +47,14 @@ h6 {
 .content {
   padding: calc($navbar-height + 3rem) 3rem 3rem calc($sidebar-length + 3rem);
 
-  // @include respond("md") {
-  //   padding: 1rem;
-  // }
+  @include respond("lg") {
+    padding: calc($navbar-height + 2rem) 2rem 2rem 2rem;
+  }
+  @include respond("md") {
+    padding: calc($navbar-height + 1.5rem) 1.5rem 1.5rem 1.5rem;
+  }
 
-  // @include respond("sm") {
-  //   padding: 0.5rem;
-  // }
+  @include respond("sm") {
+    padding: calc($navbar-height + 1rem) 1rem 1rem 1rem;
+  }
 }

@@ -16,7 +16,7 @@
   font-weight: 700;
   font-style: normal;
 }
-main {
+.auth-page {
   position: relative;
   font-family: "Avenir", sans-serif;
   display: grid;
@@ -24,21 +24,29 @@ main {
   justify-items: center;
   align-items: center;
   background: #fff;
-  min-height: 100vh;
   min-height: 100svh;
+  min-height: 100vh;
   max-width: 1536px;
   margin: 0 auto;
 }
 @media (max-width: 768px) {
-  main {
+  .auth-page {
     grid-template-columns: 1fr;
   }
 }
-main .logo {
+.auth-page .logo {
   position: absolute;
   top: 2rem;
   left: 2rem;
   z-index: 999;
+}
+.auth-page .logo img {
+  width: 100%;
+}
+@media (max-width: 640px) {
+  .auth-page .logo img {
+    max-width: 10rem;
+  }
 }
 
 .auth-image-container {
@@ -85,7 +93,7 @@ form::before {
   height: 100%;
   pointer-events: none;
 }
-form section {
+form .auth-form-section {
   display: flex;
   position: relative;
   z-index: 2;
@@ -93,27 +101,32 @@ form section {
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
-  width: min(90%, 30rem);
+  width: min(95%, 30rem);
   height: 100%;
   margin: auto;
 }
-form section h2 {
+@media (max-width: 768px) {
+  form .auth-form-section {
+    padding: 1rem;
+  }
+}
+form .auth-form-section h2 {
   font-size: 2.5rem;
   font-weight: bold;
   color: #213f7d;
 }
-form section p {
+form .auth-form-section p {
   font-size: 1.25rem;
   font-weight: 300;
   color: #545f7d;
 }
-form section .auth-error {
+form .auth-form-section .auth-error {
   border-color: red;
 }
-form section .auth-error-span {
+form .auth-form-section .auth-error-span {
   color: red;
 }
-form section input {
+form .auth-form-section input {
   padding: 1rem;
   width: 100%;
   margin: 0.5rem 0;
@@ -122,10 +135,10 @@ form section input {
   color: #545f7d;
   outline: none;
 }
-form section input::-moz-placeholder {
+form .auth-form-section input::-moz-placeholder {
   color: rgba(84, 95, 125, 0.5);
 }
-form section input::placeholder {
+form .auth-form-section input::placeholder {
   color: rgba(84, 95, 125, 0.5);
 }
 

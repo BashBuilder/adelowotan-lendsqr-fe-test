@@ -10,8 +10,8 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside>
-      <button>
+    <aside className="sidebar">
+      <button className="sidebar-switch">
         <Image
           src="/assets/svg/icons/briefcase 1.svg"
           alt="breifcase"
@@ -27,7 +27,7 @@ const Sidebar = () => {
         />
       </button>
 
-      <div className="dashboard">
+      <div className="sidebar-dashboard">
         <Image
           src="/assets/svg/icons/home 1.svg"
           alt="home icon"
@@ -47,7 +47,9 @@ const Sidebar = () => {
                 <li key={subIndex}>
                   <Link
                     href={subLink.href}
-                    className={pathname === subLink.href ? "active" : ""}
+                    className={
+                      pathname === subLink.href ? "active-sidebar-link" : ""
+                    }
                   >
                     <Image
                       src={subLink.icon}
@@ -63,6 +65,20 @@ const Sidebar = () => {
           </div>
         ))}
       </nav>
+
+      <div className="sidebar-footer">
+        <hr className="sidebar-divider" />
+        <button>
+          <Image
+            src="/assets/svg/icons/sign-out 1.svg"
+            alt="signout"
+            width={16}
+            height={16}
+          />
+          <span>Logout</span>
+        </button>
+        <p>v1.2.0</p>
+      </div>
     </aside>
   );
 };
