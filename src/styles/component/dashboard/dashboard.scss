@@ -82,7 +82,6 @@
   border-radius: 0.5rem;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   padding: 1rem;
-  max-height: 37.5rem;
   &::-webkit-scrollbar {
     height: 0.5rem;
     width: 0.5rem;
@@ -108,7 +107,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.25rem;
+        padding: 1rem;
         color: $gray-color;
         span {
           white-space: nowrap;
@@ -127,7 +126,7 @@
         }
         th,
         td {
-          padding: 1rem 1.5rem;
+          padding: 1rem;
           font-weight: 500;
           border-bottom: 1px solid rgba($gray-color, 0.2);
         }
@@ -147,28 +146,99 @@
   justify-content: space-between;
   gap: 2rem;
   align-items: center;
+}
+.left-pagination {
+  gap: 1rem;
+  color: $gray-color;
+  font-size: $font-size-sm;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  display: flex;
+  input {
+    border: none;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    color: $gray-color;
+    font-weight: 500;
+    background-color: rgba($secondary-color, 0.1);
+  }
+}
 
-  div {
-    display: flex;
+.right-pagination {
+  gap: 0.5rem;
+  display: flex;
+  @include respond("md") {
+    display: none;
+  }
+  .btn-icon {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: rgba($gray-color, 0.1);
+    &:disabled {
+      opacity: 0.1;
+    }
   }
 
-  .left-pagination {
-    gap: 1rem;
+  .btn-num {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease-in-out;
+    &:hover {
+      background-color: rgba($gray-color, 0.1);
+    }
   }
-  .right-pagination {
-    gap: 0.25rem;
+  .btn-num-active {
+    background-color: rgba($gray-color, 0.1);
+  }
+}
+
+.filter-btn {
+  background-color: rgba($gray-color, 0.1);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  color: $gray-color;
+  font-weight: 500;
+  transition: background-color 0.3s ease-in-out;
+  &:hover {
+    background-color: rgba($gray-color, 0.1);
+  }
+}
+
+.table-status {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background-color: rgba($gray-color, 0.1);
+  text-transform: capitalize;
+  &[data-status="active"] {
+    background-color: rgba(#39cd62, 0.06);
+    color: #39cd62;
+  }
+  &[data-status="inactive"] {
+    background-color: rgba($gray-color, 0.06);
+    color: $gray-color;
+  }
+  &[data-status="blacklisted"] {
+    background-color: rgba(#e4033b, 0.1);
+    color: #e4033b;
+  }
+  &[data-status="pending"] {
+    background-color: rgba(#e9b200, 0.1);
+    color: #e9b200;
   }
 }
 
 .table-modal-form {
+  position: sticky;
   background-color: $white-color;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1.25rem;
   gap: 0.75rem;
   border-radius: 0.25rem;
   border: 1px solid rgba($gray-color, 0.05);
-  width: max(100%, 16.875rem);
+  width: min(100%, 16.875rem);
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
 
   label {

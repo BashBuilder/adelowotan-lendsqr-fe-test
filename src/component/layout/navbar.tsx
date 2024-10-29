@@ -6,7 +6,7 @@ import "@/styles/component/navbar/navbar.css";
 const Navbar = () => {
   return (
     <header className="navbar-header">
-      <Link href={"#"} className="logo">
+      {/* <Link href={"#"} className="logo">
         <Image
           src="/assets/svg/lendsqr logo.svg"
           alt="sign in image"
@@ -14,7 +14,7 @@ const Navbar = () => {
           height={30}
           quality={100}
         />
-      </Link>
+      </Link> */}
 
       <form className="search-form">
         <input type="text" placeholder="Search for anything" />

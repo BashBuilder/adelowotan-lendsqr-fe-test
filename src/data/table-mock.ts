@@ -1,4 +1,4 @@
-export const tableData = [
+export const tableData: TableDataType[] = [
   {
     organization: "Kilback, Blick and Kessler",
     email: "Starlene",

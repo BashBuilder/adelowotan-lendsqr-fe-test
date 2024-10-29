@@ -1,14 +1,100 @@
-import { tableData, tableHeader } from "@/data/constants";
+"use client";
+import { tableHeader } from "@/data/constants";
 import Image from "next/image";
-import React from "react";
-// import TableFormModal from "./table-form-modal";
-// import Popover from "../ui/popover";
+import React, { useEffect, useState } from "react";
+import TableFormModal from "./table-form-modal";
+import { TableFilterSchemaType } from "@/utils/tablefilter";
+import Pagination from "../ui/pagination";
 
-const buttonList = [1, 2, 3, 4, 5];
+interface TablePropsType {
+  data: TableDataType[];
+}
 
-const UserTable = () => {
+const UserTable = ({ data }: TablePropsType) => {
+  const pageLength = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentList, setCurrentList] = useState({ start: 0, end: 10 });
+  const [isFiltering, setIsFiltering] = useState(false);
+  const [displayData, setDisplayData] = useState<TableDataType[]>([]);
+  const [showFilter, setshowFilter] = useState(false);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage((prev) => prev + page);
+  };
+
+  useEffect(() => {
+    if (currentPage === 0) {
+      setCurrentPage(1);
+    }
+    if (currentPage > displayData.length / pageLength) {
+      setCurrentPage(displayData.length / pageLength);
+    }
+
+    setCurrentList({
+      start: (currentPage - 1) * pageLength,
+      end: currentPage * pageLength,
+    });
+    // eslint-disable-next-line
+  }, [currentPage]);
+
+  const handleFilter = (filterData: TableFilterSchemaType) => {
+    setIsFiltering(true);
+    const cleanedFilter: Partial<TableFilterSchemaType> = Object.keys(
+      filterData
+    )
+      .filter(
+        (key) =>
+          filterData[key as keyof TableFilterSchemaType] !== "" &&
+          filterData[key as keyof TableFilterSchemaType] !== null &&
+          filterData[key as keyof TableFilterSchemaType] !== undefined
+      )
+      .reduce((acc, key) => {
+        acc[key as keyof TableFilterSchemaType] =
+          filterData[key as keyof TableFilterSchemaType];
+        return acc;
+      }, {} as Partial<TableFilterSchemaType>);
+
+    const filteredData = data.filter((item: TableDataType) => {
+      return Object.keys(cleanedFilter).every(
+        (key) =>
+          item[key as keyof TableDataType] ===
+          cleanedFilter[key as keyof TableFilterSchemaType]
+      );
+    });
+    setCurrentPage(1);
+    setDisplayData(filteredData);
+  };
+
+  const handleStopFilter = () => {
+    setIsFiltering(false);
+    setCurrentPage(1);
+    setDisplayData(data);
+  };
+
+  useEffect(() => {
+    if (!isFiltering) {
+      setDisplayData(data);
+    }
+    // eslint-disable-next-line
+  }, [isFiltering]);
+
+  const onSelect = (number: number) => setCurrentPage(number);
+
   return (
     <div className="table-section">
+      {showFilter && (
+        <TableFormModal
+          handleFilter={handleFilter}
+          setShowFilter={setshowFilter}
+        />
+      )}
+
+      {isFiltering && (
+        <button className="filter-btn" onClick={handleStopFilter}>
+          Close Filter
+        </button>
+      )}
+
       <div className="table-container">
         <table className="table">
           <thead>
@@ -16,17 +102,18 @@ const UserTable = () => {
               {tableHeader.map((header) => (
                 <th key={header} scope="col">
                   {header && (
-                    <div className="table-header">
+                    <button
+                      onClick={() => setshowFilter(true)}
+                      className="table-header"
+                    >
                       <span> {header} </span>
-                      <span>
-                        <Image
-                          src="/assets/svg/icons/filter.svg"
-                          alt="sort-icon"
-                          width={12}
-                          height={12}
-                        />
-                      </span>
-                    </div>
+                      <Image
+                        src="/assets/svg/icons/filter.svg"
+                        alt="sort-icon"
+                        width={12}
+                        height={12}
+                      />
+                    </button>
                   )}
                 </th>
               ))}
@@ -34,26 +121,32 @@ const UserTable = () => {
           </thead>
 
           <tbody>
-            {tableData.map((data, index) => (
-              <tr key={index}>
-                <td>{data.organization}</td>
-                <td>{data.username}</td>
-                <td>{data.email}</td>
-                <td>{data.phoneNumber}</td>
-                <td>{data.dateJoined}</td>
-                <td>{data.status}</td>
-                <td>
-                  <button>
-                    <Image
-                      src="/assets/svg/icons/ic-more-vert-18px.svg"
-                      alt="sort-icon"
-                      width={18}
-                      height={18}
-                    />
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {displayData
+              .slice(currentList.start, currentList.end)
+              .map((data, index) => (
+                <tr key={index}>
+                  <td>{data.organization}</td>
+                  <td>{data.username}</td>
+                  <td>{data.email}</td>
+                  <td>{data.phoneNumber}</td>
+                  <td>{data.dateJoined}</td>
+                  <td>
+                    <span data-status={data.status} className="table-status">
+                      {data.status}
+                    </span>
+                  </td>
+                  <td>
+                    <button>
+                      <Image
+                        src="/assets/svg/icons/ic-more-vert-18px.svg"
+                        alt="sort-icon"
+                        width={18}
+                        height={18}
+                      />
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
@@ -62,33 +155,43 @@ const UserTable = () => {
       <div className="table-pagination">
         <div className="left-pagination">
           <p>Showing</p>
-          <select name="" id="">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-          </select>
-          <p>Out of 100</p>
+          <input
+            type="number"
+            value={currentPage === 0 ? 1 : currentPage}
+            min={1}
+            max={displayData.length / pageLength}
+            onChange={(e) => setCurrentPage(Number(e.target.value))}
+          />
+          <p>Out of {displayData.length / pageLength}</p>
         </div>
         <div className="right-pagination">
-          <button>
+          <button
+            onClick={() => handlePageChange(-1)}
+            disabled={currentPage === 1}
+            className="btn-icon"
+          >
             <Image
-              src="/assets/svg/icons/ic-chevron-left-18px.svg"
+              src="/assets/svg/icons/chevron left.svg"
               alt="sort-icon"
-              width={18}
-              height={18}
+              width={10}
+              height={10}
             />
           </button>
-          {buttonList.map((button) => (
-            <button key={button} className={button === 1 ? "" : ""}>
-              {button}
-            </button>
-          ))}
-          <button>
+          <Pagination
+            total={displayData.length / pageLength}
+            current={currentPage}
+            onSelect={onSelect}
+          />
+          <button
+            onClick={() => handlePageChange(1)}
+            disabled={currentPage === displayData.length / pageLength}
+            className="btn-icon"
+          >
             <Image
-              src="/assets/svg/icons/ic-chevron-left-18px.svg"
+              src="/assets/svg/icons/chevron right.svg"
               alt="sort-icon"
-              width={18}
-              height={18}
+              width={10}
+              height={10}
             />
           </button>
         </div>
