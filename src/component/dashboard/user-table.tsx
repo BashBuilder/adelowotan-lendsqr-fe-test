@@ -6,6 +6,9 @@ import TableFormModal from "./table-form-modal";
 import { TableFilterSchemaType } from "@/utils/tablefilter";
 import Pagination from "../ui/pagination";
 
+import Popup from "reactjs-popup";
+// import "reactjs-popup/dist/index.css";
+
 interface TablePropsType {
   data: TableDataType[];
 }
@@ -16,7 +19,6 @@ const UserTable = ({ data }: TablePropsType) => {
   const [currentList, setCurrentList] = useState({ start: 0, end: 10 });
   const [isFiltering, setIsFiltering] = useState(false);
   const [displayData, setDisplayData] = useState<TableDataType[]>([]);
-  const [showFilter, setshowFilter] = useState(false);
 
   const handlePageChange = (page: number) => {
     setCurrentPage((prev) => prev + page);
@@ -82,13 +84,6 @@ const UserTable = ({ data }: TablePropsType) => {
 
   return (
     <div className="table-section">
-      {showFilter && (
-        <TableFormModal
-          handleFilter={handleFilter}
-          setShowFilter={setshowFilter}
-        />
-      )}
-
       {isFiltering && (
         <button className="filter-btn" onClick={handleStopFilter}>
           Close Filter
@@ -102,18 +97,31 @@ const UserTable = ({ data }: TablePropsType) => {
               {tableHeader.map((header) => (
                 <th key={header} scope="col">
                   {header && (
-                    <button
-                      onClick={() => setshowFilter(true)}
-                      className="table-header"
+                    <Popup
+                      trigger={
+                        <button className="table-header">
+                          <span> {header} </span>
+                          <Image
+                            src="/assets/svg/icons/filter.svg"
+                            alt="sort-icon"
+                            width={12}
+                            height={12}
+                          />
+                        </button>
+                      }
+                      position="bottom left"
+                      arrow={false}
                     >
-                      <span> {header} </span>
-                      <Image
-                        src="/assets/svg/icons/filter.svg"
-                        alt="sort-icon"
-                        width={12}
-                        height={12}
-                      />
-                    </button>
+                      {/* @ts-expect-error "ts expects a react component instead of a function which is wrong" */}
+                      {(close) => (
+                        <div className="table-modal-container">
+                          <TableFormModal
+                            handleFilter={handleFilter}
+                            close={() => close()}
+                          />
+                        </div>
+                      )}
+                    </Popup>
                   )}
                 </th>
               ))}
@@ -136,14 +144,53 @@ const UserTable = ({ data }: TablePropsType) => {
                     </span>
                   </td>
                   <td>
-                    <button>
-                      <Image
-                        src="/assets/svg/icons/ic-more-vert-18px.svg"
-                        alt="sort-icon"
-                        width={18}
-                        height={18}
-                      />
-                    </button>
+                    <Popup
+                      trigger={
+                        <button>
+                          <Image
+                            src="/assets/svg/icons/ic-more-vert-18px.svg"
+                            alt="sort-icon"
+                            width={18}
+                            height={18}
+                          />
+                        </button>
+                      }
+                      position="bottom right"
+                      arrow={false}
+                    >
+                      {/* @ts-expect-error "ts expects a react component instead of a function which is wrong" */}
+                      {(close) => (
+                        <div className="table-options-modal">
+                          <button>
+                            <Image
+                              src="/assets/svg/icons/eyes.svg"
+                              alt="sort-icon"
+                              width={18}
+                              height={18}
+                            />
+                            <span>View Details</span>
+                          </button>
+                          <button>
+                            <Image
+                              src="/assets/svg/icons/np_delete-friend_3248001_000000 1.svg"
+                              alt="sort-icon"
+                              width={18}
+                              height={18}
+                            />
+                            <span>Blacklist User</span>
+                          </button>
+                          <button>
+                            <Image
+                              src="/assets/svg/icons/np_user_2995993_000000 1.svg"
+                              alt="sort-icon"
+                              width={18}
+                              height={18}
+                            />
+                            <span>Activate User</span>
+                          </button>
+                        </div>
+                      )}
+                    </Popup>
                   </td>
                 </tr>
               ))}

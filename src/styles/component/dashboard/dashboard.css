@@ -188,16 +188,18 @@
 }
 
 .filter-btn {
-  background-color: rgba(84, 95, 125, 0.1);
+  background-color: rgba(255, 51, 102, 0.3);
   border: none;
+  width: -moz-fit-content;
+  width: fit-content;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  color: #545f7d;
+  color: #ff3366;
   font-weight: 500;
   transition: background-color 0.3s ease-in-out;
 }
 .filter-btn:hover {
-  background-color: rgba(84, 95, 125, 0.1);
+  background-color: rgba(255, 51, 102, 0.1);
 }
 
 .table-status {
@@ -223,8 +225,11 @@
   color: #e9b200;
 }
 
+.table-modal-container {
+  width: 400px;
+}
+
 .table-modal-form {
-  position: sticky;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -275,4 +280,29 @@
   background-color: #39cdcc;
   color: #fff;
   border: 1px solid #39cdcc;
+}
+
+.table-options-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  width: 14rem;
+  overflow: hidden;
+}
+.table-options-modal button {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  gap: 1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+.table-options-modal button:hover {
+  background-color: rgba(84, 95, 125, 0.1);
+}
+.table-options-modal button span {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #545f7d;
 }/*# sourceMappingURL=dashboard.css.map */

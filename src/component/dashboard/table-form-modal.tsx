@@ -6,10 +6,10 @@ import { tableFilterSchema, TableFilterSchemaType } from "@/utils/tablefilter";
 
 interface TableFilterProps {
   handleFilter: (data: TableFilterSchemaType) => void;
-  setshowFilter: React.Dispatch<React.SetStateAction<boolean>>;
+  close: () => void;
 }
 
-const TableFormModal = ({ handleFilter, setshowFilter }: TableFilterProps) => {
+const TableFormModal = ({ handleFilter, close }: TableFilterProps) => {
   const {
     register,
     handleSubmit,
@@ -20,8 +20,8 @@ const TableFormModal = ({ handleFilter, setshowFilter }: TableFilterProps) => {
   });
 
   const onSubmit: SubmitHandler<TableFilterSchemaType> = async (data) => {
+    close();
     handleFilter(data);
-    setshowFilter(false);
   };
 
   return (

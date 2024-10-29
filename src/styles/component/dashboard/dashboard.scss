@@ -194,15 +194,16 @@
 }
 
 .filter-btn {
-  background-color: rgba($gray-color, 0.1);
+  background-color: rgba(#ff3366, 0.3);
   border: none;
+  width: fit-content;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  color: $gray-color;
+  color: #ff3366;
   font-weight: 500;
   transition: background-color 0.3s ease-in-out;
   &:hover {
-    background-color: rgba($gray-color, 0.1);
+    background-color: rgba(#ff3366, 0.1);
   }
 }
 
@@ -229,8 +230,11 @@
   }
 }
 
+.table-modal-container {
+  width: 400px;
+}
+
 .table-modal-form {
-  position: sticky;
   background-color: $white-color;
   display: flex;
   flex-direction: column;
@@ -282,6 +286,32 @@
       background-color: $primary-color;
       color: $white-color;
       border: 1px solid $primary-color;
+    }
+  }
+}
+
+.table-options-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: $white-color;
+  border-radius: 0.5rem;
+  width: 14rem;
+  overflow: hidden;
+  button {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    gap: 1rem;
+    transition: background-color 0.3s ease-in-out;
+    &:hover {
+      background-color: rgba($gray-color, 0.1);
+    }
+
+    span {
+      font-weight: 500;
+      font-size: $font-size-sm;
+      color: $gray-color;
     }
   }
 }
