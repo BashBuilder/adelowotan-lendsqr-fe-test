@@ -95,3 +95,13 @@
     display: flex;
   }
 }
+
+.logout-btn {
+  padding: 1rem 2rem;
+  background: $white-color;
+  border-radius: 0.5rem;
+  box-shadow: $shadow-default;
+  &:hover {
+    background: #f1f1f1;
+  }
+}

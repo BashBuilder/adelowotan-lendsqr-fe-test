@@ -169,7 +169,7 @@
     border-radius: 0.25rem;
     color: $gray-color;
     font-weight: 500;
-    background-color: rgba($secondary-color, 0.1);
+    background-color: #e8ebf2;
   }
 }
 
@@ -270,6 +270,9 @@
       border-radius: 0.5rem;
       border: 1px solid rgba($gray-color, 0.1);
       font-size: $font-size-sm;
+      outline: none;
+      font-family: 500;
+      color: $gray-color;
     }
   }
   div {
@@ -320,6 +323,29 @@
       font-weight: 500;
       font-size: $font-size-sm;
       color: $gray-color;
+    }
+  }
+}
+
+.number-input-container {
+  position: relative;
+  height: 100%;
+  width: fit-content;
+  overflow: hidden;
+
+  .btn-container {
+    background: #e8ebf2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    right: 0.25rem;
+    button {
+      // padding: 0.25rem;
+      padding: 0px 4px;
+      border-radius: 0.25rem;
+      &:disabled {
+        opacity: 0.1;
+      }
     }
   }
 }

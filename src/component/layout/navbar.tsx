@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useCallback } from "react";
 import "@/styles/component/navbar/navbar.css";
+import SearchForm from "../ui/search-form";
+import Popup from "reactjs-popup";
+import LogoutBtn from "../ui/logout-btn";
 
 const Navbar = () => {
   const handleToggleSidebar = useCallback(() => {
@@ -46,18 +49,7 @@ const Navbar = () => {
         />
       </Link>
 
-      <form className="search-form">
-        <input type="text" placeholder="Search for anything" />
-        <button>
-          <Image
-            src="/assets/svg/icons/search.svg"
-            alt="search icon"
-            width={16}
-            height={16}
-            quality={100}
-          />
-        </button>
-      </form>
+      <SearchForm />
 
       <section className="navbar-section">
         <Link href={"#"}>Docs</Link>
@@ -72,24 +64,32 @@ const Navbar = () => {
           </svg>
         </button>
 
-        <button className="user-dropdown">
-          <Image
-            src="/assets/images/Adedeji.png"
-            alt="user image"
-            width={48}
-            height={48}
-            quality={100}
-          />
-          <span>
-            <span>Adedeju</span>
-            <Image
-              src="/assets/svg/icons/chevron-down.svg"
-              alt="arrow down"
-              width={8}
-              height={8}
-            />
-          </span>
-        </button>
+        <Popup
+          trigger={
+            <button className="user-dropdown">
+              <Image
+                src="/assets/images/Adedeji.png"
+                alt="user image"
+                width={48}
+                height={48}
+                quality={100}
+              />
+              <span>
+                <span>Adedeju</span>
+                <Image
+                  src="/assets/svg/icons/chevron-down.svg"
+                  alt="arrow down"
+                  width={8}
+                  height={8}
+                />
+              </span>
+            </button>
+          }
+          position="bottom left"
+          arrow={false}
+        >
+          <LogoutBtn />
+        </Popup>
       </section>
 
       <button

@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import "@/styles/component/Sidebar/sidebar.css";
 import Image from "next/image";
@@ -7,10 +8,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { sidebarLinks } from "@/data/constants";
 import { clearSession } from "@/services/session";
 import { toast } from "react-toastify";
+import Popup from "reactjs-popup";
+import LogoutBtn from "../ui/logout-btn";
 
 const Sidebar = () => {
   const pathname = usePathname();
-
   const router = useRouter();
 
   const handleLogout = () => {
@@ -21,26 +23,27 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar hidden-sidebar">
-      <section className="sidebar-section">
-        <button className="user-dropdown">
-          <Image
-            src="/assets/images/Adedeji.png"
-            alt="user image"
-            width={48}
-            height={48}
-            quality={100}
-          />
-          <span>
-            <span>Adedeju</span>
-            {/* <Image
-              src="/assets/svg/icons/chevron-down.svg"
-              alt="arrow down"
-              width={8}
-              height={8}
-            /> */}
-          </span>
-        </button>
-      </section>
+      <Popup
+        trigger={
+          <section className="sidebar-section">
+            <button className="user-dropdown">
+              <Image
+                src="/assets/images/Adedeji.png"
+                alt="user image"
+                width={48}
+                height={48}
+                quality={100}
+              />
+              <span>
+                <span>Adedeju</span>
+              </span>
+            </button>
+          </section>
+        }
+        arrow={false}
+      >
+        <LogoutBtn />
+      </Popup>
 
       <button className="sidebar-switch">
         <Image

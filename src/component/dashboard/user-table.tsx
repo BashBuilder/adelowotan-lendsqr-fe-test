@@ -93,7 +93,7 @@ const UserTable = ({ data }: TablePropsType) => {
     <div className="table-section">
       {isFiltering && (
         <button className="filter-btn" onClick={handleStopFilter}>
-          Close Filter
+          Reset Filter
         </button>
       )}
 
@@ -228,14 +228,43 @@ const UserTable = ({ data }: TablePropsType) => {
       <div className="table-pagination">
         <div className="left-pagination">
           <p>Showing</p>
-          <input
-            type="number"
-            value={currentPage === 0 ? 1 : currentPage}
-            min={1}
-            max={displayData.length / pageLength}
-            onChange={(e) => setCurrentPage(Number(e.target.value))}
-          />
-          <p>Out of {displayData.length / pageLength}</p>
+          <div className="number-input-container">
+            <input
+              type="number"
+              value={currentPage === 0 ? 1 : currentPage}
+              min={1}
+              max={displayData.length / pageLength}
+              onChange={(e) => setCurrentPage(Number(e.target.value))}
+            />
+
+            <div className="btn-container">
+              <button
+                onClick={() => handlePageChange(-1)}
+                disabled={currentPage === 1}
+                className="btn-icon"
+              >
+                <Image
+                  src="/assets/svg/icons/chevron left.svg"
+                  alt="sort-icon"
+                  width={10}
+                  height={10}
+                />
+              </button>
+              <button
+                onClick={() => handlePageChange(1)}
+                disabled={currentPage === displayData.length / pageLength}
+                className="btn-icon"
+              >
+                <Image
+                  src="/assets/svg/icons/chevron right.svg"
+                  alt="sort-icon"
+                  width={10}
+                  height={10}
+                />
+              </button>
+            </div>
+          </div>
+          <p>Out of {Math.floor(displayData.length / pageLength)}</p>
         </div>
         <div className="right-pagination">
           <button
@@ -251,7 +280,7 @@ const UserTable = ({ data }: TablePropsType) => {
             />
           </button>
           <Pagination
-            total={displayData.length / pageLength}
+            total={Math.floor(displayData.length / pageLength)}
             current={currentPage}
             onSelect={onSelect}
           />

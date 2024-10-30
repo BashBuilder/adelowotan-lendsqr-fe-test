@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { saveDataLocally, isUserExists } from "../app/actions"; // Import the actions
+import { saveDataLocally, isUserExists } from "../app/actions";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -81,9 +81,9 @@ const AuthForm = () => {
       onSubmit={handleSubmit(
         isResetPasswordLink.state ? handlePasswordReset : onSubmit
       )}
+      className="auth-form"
     >
       <section className="auth-form-section">
-        {/* Auth Heading */}
         <div>
           <h2>
             {isForgotPassword

@@ -161,7 +161,7 @@
   border-radius: 0.25rem;
   color: #545f7d;
   font-weight: 500;
-  background-color: rgba(33, 63, 125, 0.1);
+  background-color: #e8ebf2;
 }
 
 .right-pagination {
@@ -263,6 +263,9 @@
   border-radius: 0.5rem;
   border: 1px solid rgba(84, 95, 125, 0.1);
   font-size: 0.875rem;
+  outline: none;
+  font-family: 500;
+  color: #545f7d;
 }
 .table-modal-form div {
   display: flex;
@@ -311,4 +314,26 @@
   font-weight: 500;
   font-size: 0.875rem;
   color: #545f7d;
+}
+
+.number-input-container {
+  position: relative;
+  height: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  overflow: hidden;
+}
+.number-input-container .btn-container {
+  background: #e8ebf2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  right: 0.25rem;
+}
+.number-input-container .btn-container button {
+  padding: 0px 4px;
+  border-radius: 0.25rem;
+}
+.number-input-container .btn-container button:disabled {
+  opacity: 0.1;
 }/*# sourceMappingURL=dashboard.css.map */

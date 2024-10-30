@@ -29,8 +29,9 @@ const TableFormModal = ({ handleFilter, close }: TableFilterProps) => {
       <label>
         <span>Organization</span>
         <select {...register("organization")}>
-          <option value=""></option>
-          <option value="Ade">Ade</option>
+          <option value="">Select ...</option>
+          <option value="Lendsqr">Lendsqr</option>
+          <option value="Irorun">Irorun</option>
         </select>
       </label>
 
@@ -60,6 +61,9 @@ const TableFormModal = ({ handleFilter, close }: TableFilterProps) => {
         <select {...register("status")}>
           <option value=""></option>
           <option value="active">active</option>
+          <option value="inactive">inactive</option>
+          <option value="blacklisted">blacklisted</option>
+          <option value="pending">pending</option>
         </select>
       </label>
 
