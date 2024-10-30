@@ -16,7 +16,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     clearSession();
     toast.success("User logged out");
-    router.push("/auth");
+    router.push("/");
   };
 
   return (

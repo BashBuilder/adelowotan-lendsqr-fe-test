@@ -1,7 +1,7 @@
 import React from "react";
 import "@/styles/component/Auth/auth.css";
 import Image from "next/image";
-import AuthForm from "./form";
+import AuthForm from "../modules/form";
 import Link from "next/link";
 
 const AuthPage = () => {

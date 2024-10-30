@@ -8,7 +8,6 @@ import Pagination from "../ui/pagination";
 
 import Popup from "reactjs-popup";
 import { toast } from "react-toastify";
-import "reactjs-popup/dist/index.css";
 import { useRouter } from "next/navigation";
 
 interface TablePropsType {
@@ -87,10 +86,7 @@ const UserTable = ({ data }: TablePropsType) => {
   const onSelect = (number: number) => setCurrentPage(number);
 
   const notify = (message: string) => {
-    toast.success(message, {
-      position: "top-right",
-      autoClose: 5000, // auto-close after 5 seconds
-    });
+    toast.success("This is a demo test. " + message);
   };
 
   return (
@@ -174,7 +170,7 @@ const UserTable = ({ data }: TablePropsType) => {
                         <div className="table-options-modal">
                           <button
                             onClick={() => {
-                              router.push("/" + data.id);
+                              router.push("/user/" + data.id);
                               close();
                             }}
                           >

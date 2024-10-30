@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { saveDataLocally, isUserExists } from "./actions"; // Import the actions
+import { saveDataLocally, isUserExists } from "../app/actions"; // Import the actions
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -56,7 +56,7 @@ const AuthForm = () => {
         }
       }
       await saveDataLocally(data, isSignup ? "signup" : "login");
-      gotoPage("/");
+      gotoPage("/user");
     } catch (error) {
       console.error(error);
       toast.warning("An error occurred while processing your request.");

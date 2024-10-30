@@ -21,7 +21,7 @@ const UserDetails = async ({ params }: { params: Params }) => {
   if (!tableData || !userData) {
     return (
       <main className="user-details-page">
-        <Link className="go-back" href="/">
+        <Link className="go-back" href="/user">
           <Image
             src="/assets/svg/icons/arrowback.svg"
             alt="user icon"
@@ -40,7 +40,7 @@ const UserDetails = async ({ params }: { params: Params }) => {
 
   return (
     <main className="user-details-page">
-      <Link className="go-back" href="/">
+      <Link className="go-back" href="/user">
         <Image
           src="/assets/svg/icons/arrowback.svg"
           alt="user icon"

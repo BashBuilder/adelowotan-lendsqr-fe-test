@@ -6,6 +6,7 @@ import { fetchTableData } from "@/utils/request";
 
 const Dashboard = async () => {
   const tableData = await fetchTableData();
+
   return (
     <main className="main">
       <h1 className="page-title">Users</h1>
