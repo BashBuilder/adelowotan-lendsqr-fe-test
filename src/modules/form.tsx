@@ -1,196 +1,22 @@
 "use client";
+
 import React, { useState } from "react";
-import { z } from "zod";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  saveDataLocally,
-  isUserExists,
-  isCorrectPassword,
-} from "@/services/auth";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+import Login from "./login";
+import Signup from "./signup";
+import ForgetPassword from "./forget-password";
 
-const authSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(3, "Password not strong enough").max(20),
-});
-
-type AuthSchemaType = z.infer<typeof authSchema>;
-
-const AuthForm = () => {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const [isSignup, setIsSignup] = useState(false);
-  const [isResetPasswordLink, setIsResetPasswordLink] = useState({
-    state: false,
-    email: "",
-  });
-  const router = useRouter();
-  const gotoPage = (link: string) => router.push(link);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<AuthSchemaType>({ resolver: zodResolver(authSchema) });
-
-  // handle form submission
-  const onSubmit: SubmitHandler<AuthSchemaType> = async (data) => {
-    try {
-      const userExists = await isUserExists(data.email);
-
-      if (isForgotPassword) {
-        if (!userExists) {
-          toast.error("User not found. Please sign up.");
-          return;
-        }
-        setIsResetPasswordLink({ state: true, email: data.email });
-        return;
-      }
-
-      if (isSignup) {
-        if (userExists) {
-          toast.error("User already exists. Please login.");
-          return;
-        }
-      } else {
-        if (!userExists) {
-          toast.error("User not found. Please sign up.");
-          return;
-        }
-        const correctPassword = await isCorrectPassword(
-          data.email,
-          data.password
-        );
-        if (!correctPassword) {
-          toast.error("Incorrect password. Please try again.");
-          return;
-        }
-      }
-      await saveDataLocally(data, isSignup ? "signup" : "login");
-      gotoPage("/user");
-    } catch (error) {
-      console.error(error);
-      toast.warning("An error occurred while processing your request.");
-    }
-  };
-
-  const handlePasswordReset = async (data: AuthSchemaType) => {
-    await saveDataLocally(
-      { email: isResetPasswordLink.email, password: data.password },
-      "reset"
-    );
-    toast.success(
-      "Password reset successfully. You can now login with your new password."
-    );
-    setIsForgotPassword(false);
-    setIsResetPasswordLink({ state: false, email: "" });
-  };
+const Auth: React.FC = () => {
+  const [view, setView] = useState<"login" | "signup" | "forgetPassword">(
+    "login"
+  );
 
   return (
-    <form
-      onSubmit={handleSubmit(
-        isResetPasswordLink.state ? handlePasswordReset : onSubmit
-      )}
-      className="auth-form"
-    >
-      <section className="auth-form-section">
-        <div>
-          <h2>
-            {isForgotPassword
-              ? isResetPasswordLink.state
-                ? "Set New Password"
-                : "Reset Password"
-              : isSignup
-              ? "Sign Up"
-              : "Welcome!"}
-          </h2>
-          <p>
-            {isForgotPassword
-              ? isResetPasswordLink.state
-                ? "Enter your new password below."
-                : "Enter your email to reset password."
-              : isSignup
-              ? "Create your account."
-              : "Enter details to login."}
-          </p>
-        </div>
-
-        {/* Auth Form Section */}
-        <div>
-          {/* Email (shown only if not in the second step of reset password) */}
-          {!isResetPasswordLink.state && (
-            <input
-              type="email"
-              placeholder="Email"
-              className={errors.email ? "auth-error" : ""}
-              {...register("email")}
-            />
-          )}
-          {errors.email && (
-            <span className="auth-error-span">{errors.email.message}</span>
-          )}
-
-          {/* Password (shown in all cases except for the first step of reset password) */}
-          {(isResetPasswordLink.state || !isForgotPassword) && (
-            <div className="password-container">
-              <input
-                type={isPasswordVisible ? "text" : "password"}
-                placeholder="Password"
-                className={errors.password ? "auth-error" : ""}
-                {...register("password")}
-              />
-              <button
-                type="button"
-                onClick={() => setIsPasswordVisible((prev) => !prev)}
-              >
-                {isPasswordVisible ? "HIDE" : "SHOW"}
-              </button>
-            </div>
-          )}
-          {errors.password && (
-            <span className="auth-error-span">{errors.password.message}</span>
-          )}
-        </div>
-
-        {/* Conditional buttons */}
-        {!isForgotPassword && (
-          <button
-            type="button"
-            className="btn-forget"
-            onClick={() => setIsForgotPassword(true)}
-          >
-            FORGOT PASSWORD?
-          </button>
-        )}
-
-        <button className="btn-submit" disabled={isSubmitting}>
-          {isSubmitting
-            ? "Submitting..."
-            : isForgotPassword
-            ? isResetPasswordLink.state
-              ? "Set New Password"
-              : "Reset Password"
-            : isSignup
-            ? "Sign Up"
-            : "Login"}
-        </button>
-
-        {!isForgotPassword && (
-          <button
-            type="button"
-            className="btn-switch"
-            onClick={() => setIsSignup((prev) => !prev)}
-          >
-            {isSignup
-              ? "Already have an account? Login"
-              : "Don't have an account? Sign Up"}
-          </button>
-        )}
-      </section>
-    </form>
+    <>
+      {view === "login" && <Login setView={setView} />}
+      {view === "signup" && <Signup setView={setView} />}
+      {view === "forgetPassword" && <ForgetPassword setView={setView} />}
+    </>
   );
 };
 
-export default AuthForm;
+export default Auth;

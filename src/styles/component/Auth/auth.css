@@ -178,7 +178,15 @@
   border-radius: 0.5rem;
   transition: background-color 0.3s ease-in-out;
   padding: 1rem 2rem;
+  cursor: pointer;
 }
 .btn-submit:hover {
   background-color: #2ba8a8;
+}
+
+.align-items-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }/*# sourceMappingURL=auth.css.map */

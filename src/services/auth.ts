@@ -1,52 +1,59 @@
-import { createSession } from "@/services/session";
 import { toast } from "react-toastify";
+import { createSession } from "./session";
 
-interface UserData {
+interface User {
   email: string;
   password: string;
 }
 
-// Function to save data in local storage
-export const saveDataLocally = (
-  data: UserData,
-  action: "signup" | "login" | "reset"
-): void => {
-  const users: UserData[] = JSON.parse(localStorage.getItem("users") || "[]");
+export function signup(user: User) {
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+  const userExists = users.some((u: User) => u.email === user.email);
 
-  if (action === "signup") {
-    users.push(data);
-    localStorage.setItem("users", JSON.stringify(users));
-    createSession(data.email);
-    toast.success("User signed up successfully!");
-    return;
+  if (userExists) {
+    toast.error("User already exists");
+    throw new Error("User already exists");
   }
 
-  if (action === "login") {
-    createSession(data.email);
-    toast.success("User logged in successfully!");
-    return;
+  users.push(user);
+  localStorage.setItem("users", JSON.stringify(users));
+  createSession(user.email);
+  toast.success("User registered successfully");
+}
+
+export async function login(email: string, password: string) {
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+  const user = users.find(
+    (u: { email: string; password: string }) =>
+      u.email === email && u.password === password
+  );
+
+  if (!user) {
+    toast.error("Invalid email or password");
+    throw new Error("Invalid email or password");
+  }
+  localStorage.setItem("currentUser", JSON.stringify(user));
+  createSession(user.email);
+  toast.success("Logged in successfully");
+}
+
+export async function isUserExists(email: string): Promise<boolean> {
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+  return users.some((u: { email: string }) => u.email === email);
+}
+
+export function resetPassword(email: string, newPassword: string) {
+  const users = JSON.parse(localStorage.getItem("users") || "[]");
+  const userIndex = users.findIndex(
+    (u: { email: string }) => u.email === email
+  );
+
+  if (userIndex === -1) {
+    toast.error("User not found");
+    throw new Error("User not found");
   }
 
-  if (action === "reset") {
-    const updatedUsers = users.map((user) =>
-      user.email === data.email ? { ...user, password: data.password } : user
-    );
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-  }
-};
-
-// Function to check if user exists in local storage by email
-export const isUserExists = async (email: string): Promise<boolean> => {
-  const users: UserData[] = JSON.parse(localStorage.getItem("users") || "[]");
-  return users.some((user) => user.email === email);
-};
-
-// Function to validate password
-export const isCorrectPassword = async (
-  email: string,
-  password: string
-): Promise<boolean> => {
-  const users: UserData[] = JSON.parse(localStorage.getItem("users") || "[]");
-  const user = users.find((user) => user.email === email);
-  return user ? user.password === password : false;
-};
+  users[userIndex].password = newPassword;
+  localStorage.setItem("users", JSON.stringify(users));
+  toast.success("Password reset successfully! Login to continue");
+}
