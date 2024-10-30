@@ -10,6 +10,8 @@ body {
   background: #fbfbfb;
   font-family: "Work Sans", sans-serif;
   font-optical-sizing: auto;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 input {

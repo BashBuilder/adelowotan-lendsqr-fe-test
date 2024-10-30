@@ -5,12 +5,21 @@ import { fetchTableData, fetchUserData } from "@/utils/request";
 import Link from "next/link";
 import Blacklist from "./blacklist";
 import Activate from "./activate";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 interface Params {
   userId: string;
 }
 
 const UserDetails = async ({ params }: { params: Params }) => {
+  const cookieStore = await cookies();
+  const authToken = cookieStore.get("auth-token")?.value;
+
+  if (!authToken) {
+    redirect("/");
+  }
+
   const userId = Number(await params.userId);
   const alltableData: TableDataType[] = await fetchTableData();
   const allUserData: UserDetailsType[] = await fetchUserData();

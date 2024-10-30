@@ -3,8 +3,17 @@ import "@/styles/component/Auth/auth.css";
 import Image from "next/image";
 import AuthForm from "../modules/form";
 import Link from "next/link";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-const AuthPage = () => {
+const AuthPage = async () => {
+  const cookieStore = await cookies();
+  const authToken = cookieStore.get("auth-token")?.value;
+
+  if (authToken) {
+    redirect("/user");
+  }
+
   return (
     <main className="auth-page">
       <Link href={"#"} className="logo">
