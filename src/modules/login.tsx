@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.string().email(),
-  password: z.string(),
+  password: z.string().min(1, "Password is required"),
 });
 
 type LoginSchemaType = z.infer<typeof loginSchema>;
