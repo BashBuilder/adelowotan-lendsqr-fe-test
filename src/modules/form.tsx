@@ -7,7 +7,7 @@ import {
   saveDataLocally,
   isUserExists,
   isCorrectPassword,
-} from "../app/actions";
+} from "@/services/auth";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
