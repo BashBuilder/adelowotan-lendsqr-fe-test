@@ -191,7 +191,7 @@ const UserTable = ({ data }: TablePropsType) => {
                             }}
                           >
                             <Image
-                              src="/assets/svg/icons/np_delete-friend_3248001_000000 1.svg"
+                              src="/assets/svg/icons/np_delete-friend_3248001_000000 1.png"
                               alt="sort-icon"
                               width={18}
                               height={18}
@@ -207,7 +207,7 @@ const UserTable = ({ data }: TablePropsType) => {
                             }}
                           >
                             <Image
-                              src="/assets/svg/icons/np_user_2995993_000000 1.svg"
+                              src="/assets/svg/icons/np_user_2995993_000000 1.png"
                               alt="sort-icon"
                               width={18}
                               height={18}
