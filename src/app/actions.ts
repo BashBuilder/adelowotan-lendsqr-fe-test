@@ -41,7 +41,7 @@ export const isUserExists = async (email: string): Promise<boolean> => {
   return users.some((user) => user.email === email);
 };
 
-// Function to validate password for a given email
+// Function to validate password
 export const isCorrectPassword = async (
   email: string,
   password: string

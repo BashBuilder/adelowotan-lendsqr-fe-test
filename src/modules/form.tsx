@@ -35,6 +35,7 @@ const AuthForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<AuthSchemaType>({ resolver: zodResolver(authSchema) });
 
+  // handle form submission
   const onSubmit: SubmitHandler<AuthSchemaType> = async (data) => {
     try {
       const userExists = await isUserExists(data.email);
