@@ -24,7 +24,12 @@ const UserTable = ({ data }: TablePropsType) => {
   const router = useRouter();
 
   const handlePageChange = (page: number) => {
-    setCurrentPage((prev) => prev + page);
+    const newPage = currentPage + page;
+    const totalPages = Math.ceil(displayData.length / pageLength);
+
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
   };
 
   useEffect(() => {

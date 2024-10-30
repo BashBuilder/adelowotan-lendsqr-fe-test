@@ -75,6 +75,8 @@ const UserDetails = async ({ params }) => {
             />
           </span>
 
+          
+
           <div className="user-profile-identity">
             <div className="user-name">
               <h3>

@@ -168,3 +168,42 @@ export const tableData = [
     status: "Inactive",
   },
 ];
+
+interface StatItem {
+  color: string;
+  iconSrc: string;
+  label: string;
+  value: number;
+  altText: string;
+}
+
+export const statsData: StatItem[] = [
+  {
+    color: "#DF18FF",
+    iconSrc: "/assets/svg/icons/users.svg",
+    label: "Users",
+    value: 2453,
+    altText: "users",
+  },
+  {
+    color: "#5718FF",
+    iconSrc: "/assets/svg/icons/Group user.svg",
+    label: "Active Users",
+    value: 2453,
+    altText: "active users",
+  },
+  {
+    color: "#F55F44",
+    iconSrc: "/assets/svg/icons/Group data.svg",
+    label: "Users with Loans",
+    value: 12453,
+    altText: "users with loans",
+  },
+  {
+    color: "#FF3366",
+    iconSrc: "/assets/svg/icons/Group coin.svg",
+    label: "Users with Savings",
+    value: 102453,
+    altText: "users with savings",
+  },
+];

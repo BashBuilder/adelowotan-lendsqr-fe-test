@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { saveDataLocally, isUserExists } from "../app/actions";
+import {
+  saveDataLocally,
+  isUserExists,
+  isCorrectPassword,
+} from "../app/actions";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -43,6 +47,7 @@ const AuthForm = () => {
         setIsResetPasswordLink({ state: true, email: data.email });
         return;
       }
+
       if (isSignup) {
         if (userExists) {
           toast.error("User already exists. Please login.");
@@ -51,7 +56,14 @@ const AuthForm = () => {
       } else {
         if (!userExists) {
           toast.error("User not found. Please sign up.");
-
+          return;
+        }
+        const correctPassword = await isCorrectPassword(
+          data.email,
+          data.password
+        );
+        if (!correctPassword) {
+          toast.error("Incorrect password. Please try again.");
           return;
         }
       }
@@ -64,7 +76,6 @@ const AuthForm = () => {
   };
 
   const handlePasswordReset = async (data: AuthSchemaType) => {
-    // Reset password directly in local storage
     await saveDataLocally(
       { email: isResetPasswordLink.email, password: data.password },
       "reset"

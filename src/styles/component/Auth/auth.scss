@@ -31,8 +31,8 @@
   justify-items: center;
   align-items: center;
   background: #fff;
-  height: 100svh; // Small viewport height for improved mobile support
-  height: 100vh; // Fallback for older browsers
+  height: 100svh;
+  height: 100vh;
   max-width: map-get($breakpoints, "2xl");
   margin: 0 auto;
 

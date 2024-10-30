@@ -39,10 +39,10 @@ const Navbar = () => {
 
   return (
     <header className="navbar-header">
-      <Link href={"#"} className="navbar-logo">
+      <Link href="/" className="navbar-logo" aria-label="Lendsqr Home">
         <Image
           src="/assets/svg/lendsqr logo.svg"
-          alt="sign in image"
+          alt="Lendsqr logo"
           width={145}
           height={30}
           quality={100}
@@ -52,11 +52,13 @@ const Navbar = () => {
       <SearchForm />
 
       <section className="navbar-section">
-        <Link href={"#"}>Docs</Link>
-        <button>
+        <Link href="/docs" aria-label="Documentation">
+          Docs
+        </Link>
+        <button aria-label="Notifications">
           <Image
-            src="/assets/svg/icons/bell.png"
-            alt="sign in image"
+            src="/assets/svg/icons/np_notification_2425223_000000 1.png"
+            alt="Notification icon"
             width={24}
             height={24}
             quality={100}
@@ -65,19 +67,19 @@ const Navbar = () => {
 
         <Popup
           trigger={
-            <button className="user-dropdown">
+            <button className="user-dropdown" aria-label="User menu">
               <Image
                 src="/assets/images/Adedeji.png"
-                alt="user image"
+                alt="User image"
                 width={48}
                 height={48}
                 quality={100}
               />
               <span>
-                <span>Adedeju</span>
+                <span>Adedeji</span>
                 <Image
                   src="/assets/svg/icons/chevron-down.svg"
-                  alt="arrow down"
+                  alt="Arrow down icon"
                   width={8}
                   height={8}
                 />
@@ -94,6 +96,7 @@ const Navbar = () => {
       <button
         className="navbar-menu toggle-sidebar"
         onClick={handleToggleSidebar}
+        aria-label="Toggle sidebar"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <rect y="4" width="24" height="2" fill="black" />
