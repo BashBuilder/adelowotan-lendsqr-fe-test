@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 const authSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(3).max(20),
+  password: z.string().min(3, "Password not strong enough").max(20),
 });
 
 type AuthSchemaType = z.infer<typeof authSchema>;

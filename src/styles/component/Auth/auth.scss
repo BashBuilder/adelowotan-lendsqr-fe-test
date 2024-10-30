@@ -31,8 +31,8 @@
   justify-items: center;
   align-items: center;
   background: #fff;
-  min-height: 100svh; // Small viewport height for improved mobile support
-  min-height: 100vh; // Fallback for older browsers
+  height: 100svh; // Small viewport height for improved mobile support
+  height: 100vh; // Fallback for older browsers
   max-width: map-get($breakpoints, "2xl");
   margin: 0 auto;
 
@@ -42,13 +42,13 @@
 
   .logo {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 1rem;
+    left: 1rem;
     z-index: 999;
     img {
       width: 100%;
       @include respond("sm") {
-        max-width: 10rem;
+        max-width: 7rem;
       }
     }
   }

@@ -13,6 +13,11 @@
   background-color: #fff;
   box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.04);
 }
+@media (max-width: 640px) {
+  .navbar-header {
+    padding: 0.5rem 1rem;
+  }
+}
 
 .search-form {
   position: relative;
@@ -107,4 +112,13 @@
 }
 .logout-btn:hover {
   background: #f1f1f1;
+}
+
+.navbar-logo img {
+  width: 100%;
+}
+@media (max-width: 640px) {
+  .navbar-logo img {
+    max-width: 7rem;
+  }
 }/*# sourceMappingURL=navbar.css.map */

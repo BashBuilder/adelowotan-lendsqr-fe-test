@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <header className="navbar-header">
-      <Link href={"#"} className="logo">
+      <Link href={"#"} className="navbar-logo">
         <Image
           src="/assets/svg/lendsqr logo.svg"
           alt="sign in image"

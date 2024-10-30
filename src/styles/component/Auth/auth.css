@@ -24,8 +24,8 @@
   justify-items: center;
   align-items: center;
   background: #fff;
-  min-height: 100svh;
-  min-height: 100vh;
+  height: 100svh;
+  height: 100vh;
   max-width: 1536px;
   margin: 0 auto;
 }
@@ -36,8 +36,8 @@
 }
 .auth-page .logo {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: 1rem;
+  left: 1rem;
   z-index: 999;
 }
 .auth-page .logo img {
@@ -45,7 +45,7 @@
 }
 @media (max-width: 640px) {
   .auth-page .logo img {
-    max-width: 10rem;
+    max-width: 7rem;
   }
 }
 

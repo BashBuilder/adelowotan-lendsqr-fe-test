@@ -88,6 +88,7 @@
 .user-profile-detail span {
   width: 6.25rem;
   height: 6.25rem;
+  flex-shrink: 0;
   background-color: rgba(33, 63, 125, 0.16);
   display: flex;
   align-items: center;

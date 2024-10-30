@@ -14,6 +14,10 @@
   height: $navbar-height;
   background-color: $white-color;
   box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.04);
+
+  @include respond("sm") {
+    padding: 0.5rem 1rem;
+  }
 }
 
 .search-form {
@@ -103,5 +107,14 @@
   box-shadow: $shadow-default;
   &:hover {
     background: #f1f1f1;
+  }
+}
+
+.navbar-logo {
+  img {
+    width: 100%;
+    @include respond("sm") {
+      max-width: 7rem;
+    }
   }
 }
