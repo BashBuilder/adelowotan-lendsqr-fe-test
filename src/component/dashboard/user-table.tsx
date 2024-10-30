@@ -144,11 +144,11 @@ const UserTable = ({ data }: TablePropsType) => {
               .slice(currentList.start, currentList.end)
               .map((data, index) => (
                 <tr key={index}>
-                  <td>{data.organization}</td>
-                  <td>{data.username}</td>
-                  <td>{data.email}</td>
-                  <td>{data.phoneNumber}</td>
-                  <td>{data.dateJoined}</td>
+                  <td className="wrap-text">{data.organization}</td>
+                  <td className="wrap-text">{data.username}</td>
+                  <td className="wrap-text">{data.email}</td>
+                  <td className="wrap-text">{data.phoneNumber}</td>
+                  <td className="wrap-text">{data.dateJoined}</td>
                   <td>
                     <span data-status={data.status} className="table-status">
                       {data.status}

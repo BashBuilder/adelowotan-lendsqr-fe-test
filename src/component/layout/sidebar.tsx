@@ -3,14 +3,45 @@ import React from "react";
 import "@/styles/component/Sidebar/sidebar.css";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { sidebarLinks } from "@/data/constants";
+import { clearSession } from "@/services/session";
+import { toast } from "react-toastify";
 
 const Sidebar = () => {
   const pathname = usePathname();
 
+  const router = useRouter();
+
+  const handleLogout = () => {
+    clearSession();
+    toast.success("User logged out");
+    router.push("/auth");
+  };
+
   return (
-    <aside className="sidebar">
+    <aside className="sidebar hidden-sidebar">
+      <section className="sidebar-section">
+        <button className="user-dropdown">
+          <Image
+            src="/assets/images/Adedeji.png"
+            alt="user image"
+            width={48}
+            height={48}
+            quality={100}
+          />
+          <span>
+            <span>Adedeju</span>
+            {/* <Image
+              src="/assets/svg/icons/chevron-down.svg"
+              alt="arrow down"
+              width={8}
+              height={8}
+            /> */}
+          </span>
+        </button>
+      </section>
+
       <button className="sidebar-switch">
         <Image
           src="/assets/svg/icons/briefcase 1.svg"
@@ -68,7 +99,7 @@ const Sidebar = () => {
 
       <div className="sidebar-footer">
         <hr className="sidebar-divider" />
-        <button>
+        <button onClick={handleLogout}>
           <Image
             src="/assets/svg/icons/sign-out 1.svg"
             alt="signout"

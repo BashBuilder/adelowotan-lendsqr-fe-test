@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { saveDataLocally, isUserExists } from "./actions"; // Import the actions
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const authSchema = z.object({
   email: z.string().email(),
@@ -36,7 +37,7 @@ const AuthForm = () => {
 
       if (isForgotPassword) {
         if (!userExists) {
-          alert("User not found. Please sign up.");
+          toast.error("User not found. Please sign up.");
           return;
         }
         setIsResetPasswordLink({ state: true, email: data.email });
@@ -44,12 +45,13 @@ const AuthForm = () => {
       }
       if (isSignup) {
         if (userExists) {
-          alert("User already exists. Please login.");
+          toast.error("User already exists. Please login.");
           return;
         }
       } else {
         if (!userExists) {
-          alert("User not found. Please sign up.");
+          toast.error("User not found. Please sign up.");
+
           return;
         }
       }
@@ -57,7 +59,7 @@ const AuthForm = () => {
       gotoPage("/");
     } catch (error) {
       console.error(error);
-      alert("An error occurred while processing your request.");
+      toast.warning("An error occurred while processing your request.");
     }
   };
 
@@ -67,7 +69,7 @@ const AuthForm = () => {
       { email: isResetPasswordLink.email, password: data.password },
       "reset"
     );
-    alert(
+    toast.success(
       "Password reset successfully. You can now login with your new password."
     );
     setIsForgotPassword(false);

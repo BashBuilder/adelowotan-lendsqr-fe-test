@@ -13,10 +13,11 @@
   background-color: $white-color;
   padding: 7rem 0 3rem 0;
   box-shadow: 0, 5px, 20px, rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s linear;
+  transition: all 0.5s linear;
 
-  @include respond("lg") {
-    left: -100%;
+  @include respond("md") {
+    z-index: 999;
+    padding-top: 1rem;
   }
 
   scrollbar-width: 0.5rem;
@@ -30,6 +31,34 @@
   }
   &::-webkit-scrollbar-thumb:hover {
     background-color: rgba($secondary-color, 0.8);
+  }
+}
+.hidden-sidebar {
+  @include respond("md") {
+    left: -100%;
+  }
+}
+
+.sidebar-section {
+  display: none;
+  @include respond("md") {
+    display: flex;
+    align-items: center;
+    padding: 0rem 2rem;
+    gap: 1.5rem;
+    a {
+      text-decoration: underline;
+      color: $secondary-color;
+    }
+  }
+
+  button {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    span span {
+      margin-right: 0.25rem;
+    }
   }
 }
 

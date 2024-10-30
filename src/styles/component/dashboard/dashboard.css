@@ -18,7 +18,9 @@
 }
 @media (max-width: 1024px) {
   .stats {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
   }
 }
 .stats div {
@@ -33,7 +35,7 @@
   text-transform: uppercase;
   border-radius: 0.25rem;
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .stats div {
     width: 100%;
   }
@@ -121,6 +123,10 @@
 }
 .table-container .table tbody tr:hover {
   background: #fafafa;
+}
+.table-container .table tbody tr .wrap-text {
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 .table-container .table tbody tr th,
 .table-container .table tbody tr td {

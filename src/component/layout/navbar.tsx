@@ -1,12 +1,42 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useCallback } from "react";
 import "@/styles/component/navbar/navbar.css";
 
 const Navbar = () => {
+  const handleToggleSidebar = useCallback(() => {
+    const sidebar = document.querySelector(".sidebar");
+    if (sidebar) {
+      sidebar.classList.toggle("hidden-sidebar");
+      document.body.style.overflow = "hidden";
+      if (!sidebar.classList.contains("hidden-sidebar")) {
+        document.addEventListener("click", handleClickOutside);
+      } else {
+        document.removeEventListener("click", handleClickOutside);
+      }
+    }
+    //  eslint-disable-next-line
+  }, []);
+
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    const sidebar = document.querySelector(".sidebar");
+    const toggleButton = document.querySelector(".toggle-sidebar");
+    if (
+      sidebar &&
+      !sidebar.contains(event.target as Node) &&
+      toggleButton &&
+      !toggleButton.contains(event.target as Node)
+    ) {
+      sidebar.classList.add("hidden-sidebar");
+      document.removeEventListener("click", handleClickOutside);
+    }
+    document.body.style.overflow = "auto";
+  }, []);
+
   return (
     <header className="navbar-header">
-      {/* <Link href={"#"} className="logo">
+      <Link href={"#"} className="logo">
         <Image
           src="/assets/svg/lendsqr logo.svg"
           alt="sign in image"
@@ -14,7 +44,7 @@ const Navbar = () => {
           height={30}
           quality={100}
         />
-      </Link> */}
+      </Link>
 
       <form className="search-form">
         <input type="text" placeholder="Search for anything" />
@@ -61,6 +91,17 @@ const Navbar = () => {
           </span>
         </button>
       </section>
+
+      <button
+        className="navbar-menu toggle-sidebar"
+        onClick={handleToggleSidebar}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect y="4" width="24" height="2" fill="black" />
+          <rect y="11" width="24" height="2" fill="black" />
+          <rect y="18" width="24" height="2" fill="black" />
+        </svg>
+      </button>
     </header>
   );
 };

@@ -18,6 +18,7 @@
 
 .search-form {
   position: relative;
+  z-index: 9999;
   display: flex;
   width: min(100%, 400px);
   align-items: center;
@@ -84,5 +85,13 @@
   display: flex;
   img {
     border-radius: 50%;
+  }
+}
+
+.navbar-menu {
+  display: none;
+
+  @include respond("md") {
+    display: flex;
   }
 }

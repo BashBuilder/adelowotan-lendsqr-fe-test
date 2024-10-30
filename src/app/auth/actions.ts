@@ -1,6 +1,7 @@
 // actions.ts
 
 import { createSession } from "@/services/session";
+import { toast } from "react-toastify";
 
 // Function to save data in local storage
 export const saveDataLocally = (
@@ -13,13 +14,13 @@ export const saveDataLocally = (
     users.push(data);
     localStorage.setItem("users", JSON.stringify(users));
     createSession(data.email);
-    alert("User signed up successfully!");
+    toast.success("User signed up successfully!");
     return;
   }
 
   if (action === "login") {
     createSession(data.email);
-    alert("User logged in successfully!");
+    toast.success("User logged in successfully!");
     return;
   }
 

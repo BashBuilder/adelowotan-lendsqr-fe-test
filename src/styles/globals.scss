@@ -48,7 +48,7 @@ h6 {
   padding: calc($navbar-height + 3rem) 3rem 3rem calc($sidebar-length + 3rem);
 
   @include respond("lg") {
-    padding: calc($navbar-height + 2rem) 2rem 2rem 2rem;
+    padding: calc($navbar-height + 2rem) 2rem 2rem calc($sidebar-length + 2rem);
   }
   @include respond("md") {
     padding: calc($navbar-height + 1.5rem) 1.5rem 1.5rem 1.5rem;
@@ -56,5 +56,33 @@ h6 {
 
   @include respond("sm") {
     padding: calc($navbar-height + 1rem) 1rem 1rem 1rem;
+  }
+}
+
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100svh;
+  height: 100vh;
+  flex-direction: column;
+  gap: 1rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: rgba($secondary-color, 0.1);
+    }
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $primary-color;
   }
 }

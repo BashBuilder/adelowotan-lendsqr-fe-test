@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import "@/styles/component/dashboard/dashboard.css";
+import "@/styles/globals.css";
 
 const NotFound = () => {
   return (
-    <main className="user-details-page">
+    <main className="not-found">
+      <div className="header">
+        <h3>You seem lost</h3>
+      </div>
       <Link className="go-back" href="/">
         <Image
           src="/assets/svg/icons/arrowback.svg"
@@ -13,12 +16,8 @@ const NotFound = () => {
           width={20}
           height={20}
         />
-        <span>Back to Users</span>
+        <span>Back home</span>
       </Link>
-
-      <div className="header">
-        <h3>You seem lost</h3>
-      </div>
     </main>
   );
 };

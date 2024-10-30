@@ -16,6 +16,7 @@
 
 .search-form {
   position: relative;
+  z-index: 9999;
   display: flex;
   width: min(100%, 400px);
   align-items: center;
@@ -87,4 +88,13 @@
 }
 .user-dropdown img {
   border-radius: 50%;
+}
+
+.navbar-menu {
+  display: none;
+}
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: flex;
+  }
 }/*# sourceMappingURL=navbar.css.map */
