@@ -9,6 +9,7 @@ import Pagination from "../ui/pagination";
 import Popup from "reactjs-popup";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { formatDate } from "@/utils/formatDate";
 
 interface TablePropsType {
   data: TableDataType[];
@@ -149,7 +150,7 @@ const UserTable = ({ data }: TablePropsType) => {
                   <td className="wrap-text">{data.username}</td>
                   <td className="wrap-text">{data.email}</td>
                   <td className="wrap-text">{data.phoneNumber}</td>
-                  <td className="wrap-text">{data.dateJoined}</td>
+                  <td className="wrap-text">{formatDate(data.dateJoined)}</td>
                   <td>
                     <span data-status={data.status} className="table-status">
                       {data.status}
